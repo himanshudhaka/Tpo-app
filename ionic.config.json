@@ -1,0 +1,7 @@
+{
+  "name": "tpo-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
