@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Drive</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+    class="form"
+    [formGroup]="ionicForm"
+    (ngSubmit)="submitForm()"
+    novalidate
+  >
+    <ion-list>
+      <ion-item>
+        <ion-input
+          type="email"
+          placeholder="Post"
+          formControlName="post"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Description"
+          formControlName="description"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Salary"
+          formControlName="salary"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Criteria"
+          formControlName="criteria"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Process"
+          formControlName="process"
+          required
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-col>
+      <ion-button type="submit" color="danger" expand="block"
+        >Submit</ion-button
+      >
+    </ion-col>
+  </form>
+</ion-content>

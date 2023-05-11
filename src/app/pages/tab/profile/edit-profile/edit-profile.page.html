@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-title>Edit profile</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+    class="form"
+    [formGroup]="ionicForm"
+    (ngSubmit)="submitForm()"
+    novalidate
+  >
+    <ion-list>
+      <ion-item>
+        <ion-input
+          placeholder="Roll No."
+          formControlName="rollno"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="First Name"
+          formControlName="firstname"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Last Name"
+          formControlName="lastname"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Email"
+          formControlName="email"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Phone"
+          formControlName="phone"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="Academics"
+          formControlName="academics"
+          required
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-col>
+      <ion-button type="submit" color="danger" expand="block"
+        >Submit</ion-button
+      >
+    </ion-col>
+  </form>
+</ion-content>

@@ -1,0 +1,16 @@
+.container {
+  height: 40%;
+  width: 100%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  border-radius: 50%;
+}
