@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 56px;
+}
+
+.card {
+  width: 100%;
+  position: relative;
+  padding: 15px;
+  background: #fff;
+  border-radius: 23px;
+  transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 30px 15px;
+  border: 0 solid #ebf0f5 !important;
+  position: relative;
+}

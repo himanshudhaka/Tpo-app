@@ -1,26 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <div class="header">
+      <img
+        style="height: 100%; margin: 12px"
+        src="../../../../assets/logo.PNG"
+      />
+      <ion-title style="padding: 0%">TPO</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let job of jobs">
-    <ion-card-header>
-      <ion-card-title>DhakaTech</ion-card-title>
-      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-    </ion-card-header>
+  <div class="container">
+    <h1 *ngIf="!jobs.length">No Jobs to see</h1>
+    <ion-card class="card" *ngFor="let job of jobs">
+      <ion-card-header class="flex">
+        <div class="avatar"></div>
+        <div class="avatar-content">
+          <ion-card-title>{{user?.name}}</ion-card-title>
+          <p>Dundlod,Rajasthan</p>
+        </div>
+      </ion-card-header>
 
-    <ion-card-content>
-      <span><ion-icon name="arrow-redo-outline"></ion-icon>{{job.post}}</span>
-      <span><ion-icon name="money"></ion-icon>{{job.salary}}</span>
-      <span><ion-icon name="calendar"></ion-icon>1 Jan 2023</span>
-      <span>{{job.criteria}}</span>
-    </ion-card-content>
-    <ion-button color="success" fill="outline" style="margin: 20px"
-      >Edit</ion-button
-    >
-  </ion-card>
+      <ion-card-content>
+        <div>
+          <ion-chip color="primary"
+            ><ion-icon name="arrow-redo-outline"></ion-icon
+            ><ion-label>{{job.post}}</ion-label></ion-chip
+          >
+          <ion-chip color="primary"
+            ><ion-icon name="cash-outline"></ion-icon
+            ><ion-label>{{job.salary}}</ion-label></ion-chip
+          >
+          <!-- <span><ion-icon name="arrow-redo-outline"></ion-icon>{{job.post}}</span> -->
+        </div>
+        <!-- <span><ion-icon name="cash-outline"></ion-icon>{{job.salary}}</span> -->
+        <span><ion-icon name="calendar"></ion-icon>1 Jan 2023</span>
+        <span>{{job.criteria}}</span>
+      </ion-card-content>
+      <ion-button color="success" fill="outline" style="margin: 20px"
+        >Edit</ion-button
+      >
+    </ion-card>
+  </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="add-drive">

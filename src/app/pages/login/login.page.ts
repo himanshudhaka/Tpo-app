@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,11 +12,17 @@ import { first } from 'rxjs';
 export class LoginPage implements OnInit {
   ionicForm: FormGroup;
   isSubmitted = false;
+  type: string;
   constructor(
     public formBuilder: FormBuilder,
     public authService: AuthServiceService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastCtrl: ToastController
   ) {
+    this.type = this.route.snapshot.queryParams['type'];
+    // console.log(this.type);
+
     this.ionicForm = this.formBuilder.group({});
   }
 
@@ -38,16 +45,35 @@ export class LoginPage implements OnInit {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!');
+
+      // console.log(this.type);
       // this.authService.login();
       // return false;
     } else {
-      console.log(this.ionicForm.value);
       const { email, password } = this.ionicForm.value;
       this.authService
-        .login(email, password, 'company')
+        .login(email, password, this.type)
         .pipe(first())
-        .subscribe((data) => {
-          this.router.navigate(['/com-tab']);
+        .subscribe({
+          next: (data) => {
+            if (this.type === 'company') {
+              this.router.navigate(['/com-tab']);
+            } else if (this.type === 'student') {
+              this.router.navigate(['/tab']);
+            } else if (this.type === 'college') {
+              this.router.navigate(['/clg-tab']);
+            }
+          },
+          error: (err) => {
+            console.log(err);
+            this.toastCtrl
+              .create({
+                message: err.error.message,
+                duration: 2000,
+                color: 'danger',
+              })
+              .then((toast) => toast.present());
+          },
         });
     }
   }

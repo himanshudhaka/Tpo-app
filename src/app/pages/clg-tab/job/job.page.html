@@ -1,43 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar
-      animated="true"
-      placeholder="Search"
-      style="margin-top: 8px"
-    ></ion-searchbar>
+    <div class="header">
+      <img
+        style="height: 90%; margin: 12px"
+        src="../../../../assets/logo.PNG"
+      />
+      <ion-title style="padding: 0%">TPO</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item>
-      <ion-label>Harshit Mantri</ion-label>
-      <ion-button slot="end" color="danger" fill="outline">
-        Disable
-      </ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label>Ammar Bohra</ion-label>
-      <ion-button slot="end" color="danger" fill="outline">
-        Disable
-      </ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label>Himanshu Dhaka</ion-label>
-      <ion-button slot="end" color="danger" fill="outline">
-        Disable
-      </ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label>Kapil Dadhich</ion-label>
-      <ion-button slot="end" color="danger" fill="outline">
-        Disable
-      </ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label>Vasu Gupta</ion-label>
-      <ion-button slot="end" color="danger" fill="outline">
-        Disable
+    <ion-item *ngFor="let student of students">
+      <ion-label>{{student.firstName + " " + student.lastName}}</ion-label>
+      <ion-button
+        [color]="student.approved ? 'success' : 'danger'"
+        slot="end"
+        fill="outline"
+      >
+        {{student.approved ? 'Disable' : 'Enable'}}
       </ion-button>
     </ion-item>
   </ion-list>

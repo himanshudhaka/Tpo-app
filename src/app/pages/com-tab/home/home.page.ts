@@ -9,7 +9,7 @@ import { first } from 'rxjs';
 })
 export class HomePage implements OnInit {
   jobs: Job[] = [];
-
+  user: any;
   constructor(private jobsService: JobsService) {}
 
   ngOnInit() {
@@ -19,7 +19,9 @@ export class HomePage implements OnInit {
       .pipe(first())
       .subscribe((data) => {
         this.jobs = data;
-        console.log(this.jobs);
+        // console.log(this.jobs);
       });
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    // console.log(this.user);
   }
 }

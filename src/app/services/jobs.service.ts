@@ -7,14 +7,33 @@ import { Job } from '../_models/jobs';
 export class JobsService {
   job: Job[] = [];
   apiUrl: string = 'http://localhost:3000';
-  constructor(private http: HttpClient) {}
+  data: any;
+  constructor(private http: HttpClient) {
+    this.data = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   getJobs() {
-    let data = JSON.parse(localStorage.getItem('currentUser'));
-    // console.log(data.id);
-    // console.log(data);
-    return this.http.get<Job[]>(`${this.apiUrl}/companies/${data.id}/jobs`);
-    // console.log(d);
-    // return d;
+    return this.http.get<Job[]>(
+      `${this.apiUrl}/companies/${this.data.id}/jobs`
+    );
+  }
+
+  postJobs(newJob: any) {
+    let companyId = this.data.id;
+    newJob = {
+      companyId,
+      ...newJob,
+    };
+    return this.http.post(`${this.apiUrl}/jobs`, newJob);
+  }
+
+  // Getting jobs for students
+
+  getJobForS(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/student/${id}/jobs`);
+  }
+
+  getStudentForClg(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/colleges/${id}/students`);
   }
 }

@@ -1,15 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <div class="header">
+      <img
+        style="height: 90%; margin: 12px"
+        src="../../../../assets/logo.PNG"
+      />
+      <ion-title style="padding: 0%">TPO</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="container">
-    <div class="avatar"></div>
-    <div>
-      <h1>JECRC</h1>
-    </div>
+  <div style="padding: 0 15px">
+    <ion-card class="container">
+      <div >
+        <img
+          src="../.../../../../../assets/jecrc.PNG"
+          style="width: 100%"
+          alt=""
+          class="avatar"
+        />
+      </div>
+      <div style="text-align: center">
+        <h1>{{user.name}}</h1>
+
+        <!-- <h1>Hi</h1> -->
+      </div>
+    </ion-card>
   </div>
   <ion-list lines="full">
     <ion-item routerLink="edit-profile">
@@ -23,6 +40,8 @@
     </ion-item>
   </ion-list>
   <div style="margin: 16px">
-    <ion-button expand="block" color="danger" fill="outline">Logout</ion-button>
+    <ion-button expand="block" color="danger" fill="outline" (click)="onClick()"
+      >Logout</ion-button
+    >
   </div>
 </ion-content>

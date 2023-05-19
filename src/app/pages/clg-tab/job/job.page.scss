@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 56px;
+}
+
+.green {
+  color: green;
+  border: green;
+}
+.red {
+  color: red;
+  border: red;
+}

@@ -1,15 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <div class="header">
+      <img
+        style="height: 90%; margin: 12px"
+        src="../../../../assets/logo.PNG"
+      />
+      <ion-title style="padding: 0%">TPO</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="container">
-    <div class="avatar"></div>
-    <div>
-      <h1>{{company.name}}</h1>
-    </div>
+  <div style="padding: 0px 15px">
+    <ion-card class="container">
+      <div class="avatar"></div>
+      <div>
+        <h1>{{company?.name}}</h1>
+      </div>
+    </ion-card>
   </div>
   <ion-list lines="full">
     <ion-item routerLink="edit-profile">

@@ -1,41 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div class="header">
+      <img
+        style="height: 90%; margin: 12px"
+        src="../../../../assets/logo.PNG"
+      />
+      <ion-title style="padding: 0%">TPO</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form
-    class="form"
-    [formGroup]="ionicForm"
-    (ngSubmit)="submitForm()"
-    novalidate
-  >
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email" required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input
-        type="password"
-        formControlName="password"
-        required
-      ></ion-input>
-    </ion-item>
-    <ion-list lines="full">
-      <ion-item>
-        <ion-select placeholder="Select type" formControlName="type" required>
-          <ion-select-option value="company">Company</ion-select-option>
-          <ion-select-option value="college">College</ion-select-option>
-          <ion-select-option value="student">Student</ion-select-option>
-        </ion-select>
+  <div class="container">
+    <h1>Sign Up</h1>
+    <form
+      class="form"
+      [formGroup]="ionicForm"
+      (ngSubmit)="submitForm()"
+      novalidate
+    >
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email" required></ion-input>
       </ion-item>
-    </ion-list>
-    <ion-col>
-      <ion-button type="submit" color="danger" expand="block"
-        >Submit</ion-button
-      >
-    </ion-col>
-  </form>
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input
+          type="password"
+          formControlName="password"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-select placeholder="Select type" formControlName="type" required>
+            <ion-select-option value="company">Company</ion-select-option>
+            <ion-select-option value="college">College</ion-select-option>
+            <ion-select-option value="student">Student</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </form>
+  </div>
 </ion-content>

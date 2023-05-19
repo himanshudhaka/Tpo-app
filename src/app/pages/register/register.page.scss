@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 56px;
+}
+ion-content {
+  position: relative;
+}
+.container {
+  // padding: 25px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 40px 20px;
+  height: calc(100% - 60px);
+  width: calc(100% - 80px);
+  padding: 0;
+  border: 0 solid #ebf0f5 !important;
+  position: relative;
+}

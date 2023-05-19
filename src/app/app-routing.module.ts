@@ -35,19 +35,22 @@ const routes: Routes = [
     path: 'tab',
     loadChildren: () =>
       import('./pages/tab/tab.module').then((m) => m.TabPageModule),
-    // canActivate: [StdGuardGuard],
+    canActivate: [AuthGuardGuard],
+    data: { type: 'student' },
   },
   {
     path: 'clg-tab',
     loadChildren: () =>
       import('./pages/clg-tab/clg-tab.module').then((m) => m.ClgTabPageModule),
-    // canActivate: [ClgGuardGuard],
+    canActivate: [AuthGuardGuard],
+    data: { type: 'college' },
   },
   {
     path: 'com-tab',
     loadChildren: () =>
       import('./pages/com-tab/com-tab.module').then((m) => m.ComTabPageModule),
     canActivate: [AuthGuardGuard],
+    data: { type: 'company' },
   },
 ];
 

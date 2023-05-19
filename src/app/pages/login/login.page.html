@@ -3,33 +3,51 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>login</ion-title>
+    <div class="header">
+      <img
+        style="height: 90%; margin: 12px"
+        src="../../../../assets/logo.PNG"
+      />
+      <ion-title style="padding: 0%">TPO</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form
-    class="form"
-    [formGroup]="ionicForm"
-    (ngSubmit)="submitForm()"
-    novalidate
-  >
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email" required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input
-        type="password"
-        formControlName="password"
-        required
-      ></ion-input>
-    </ion-item>
-    <ion-col>
-      <ion-button type="submit" color="danger" expand="block"
-        >Submit</ion-button
+  <div class="container">
+    <div style="width: 100%">
+      <h1>Sign in</h1>
+    </div>
+
+    <div style="width: 100%">
+      <form
+        class="form"
+        [formGroup]="ionicForm"
+        (ngSubmit)="submitForm()"
+        novalidate
       >
-    </ion-col>
-  </form>
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block"
+            >Submit</ion-button
+          >
+        </ion-col>
+      </form>
+    </div>
+  </div>
+  <div class="footer">
+    New to TPO?
+    <a [routerLink]="['/register']">Create an account</a>
+  </div>
 </ion-content>

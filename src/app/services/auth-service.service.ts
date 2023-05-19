@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { Company } from '../_models/company';
 import { Router } from '@angular/router';
 
@@ -22,7 +22,7 @@ export class AuthServiceService {
     return this.http
       .post<any>(`${this.apiUrl}/login`, { email, password, type }, httpOptions)
       .pipe(
-        map((user) => {
+        tap((user) => {
           if (user && user.token) {
             localStorage.setItem('currentUser', JSON.stringify(user));
           }
@@ -30,14 +30,13 @@ export class AuthServiceService {
           // console.log(data.id);
           // let data = JSON.parse(localStorage.getItem('currentUser') || 'hello');
           // console.log(data);
-          return user;
         })
       );
   }
 
   logout() {
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   getById() {
