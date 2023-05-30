@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>
+    <div
+      class="header"
+      style="background-image: linear-gradient(to right, #00ff83, #80ffc2)"
+    >
+      <h1 style="padding-left: 10px">JobTree</h1>
+      <img src="../../../../assets/tree.png" style="height: 26px" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="box"></div>
+  <div class="container">
+    <div *ngIf="user === null">Fill the details</div>
+    <div style="width: 100%" *ngIf="user?.type === 'company'">
+      <form
+        class="form"
+        [formGroup]="ionicForm"
+        (ngSubmit)="submitForm()"
+        novalidate
+        style="width: 100%"
+      >
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Name</ion-label>
+          <ion-input formControlName="name" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input formControlName="phone" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Address</ion-label>
+          <ion-input formControlName="address" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">City</ion-label>
+          <ion-input formControlName="city" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">State</ion-label>
+          <ion-input formControlName="state" required></ion-input>
+        </ion-item>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block"
+            >Submit</ion-button
+          >
+        </ion-col>
+      </form>
+    </div>
+    <div style="width: 100%" *ngIf="user?.type === 'college'">
+      <form
+        class="form"
+        [formGroup]="ionicForm"
+        (ngSubmit)="submitForm()"
+        novalidate
+      >
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Name</ion-label>
+          <ion-input formControlName="name" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input formControlName="phone" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Address</ion-label>
+          <ion-input formControlName="address" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">City</ion-label>
+          <ion-input formControlName="city" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">State</ion-label>
+          <ion-input formControlName="state" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Pincode</ion-label>
+          <ion-input formControlName="pincode" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">AICTE ID</ion-label>
+          <ion-input formControlName="aicte_id" required></ion-input>
+        </ion-item>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block"
+            >Submit</ion-button
+          >
+        </ion-col>
+      </form>
+    </div>
+    <div style="width: 100%" *ngIf="user?.type === 'student'">
+      <form
+        class="form"
+        [formGroup]="ionicForm"
+        (ngSubmit)="submitForm()"
+        novalidate
+      >
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input formControlName="firstName" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input formControlName="lastName" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">College Roll Number</ion-label>
+          <ion-input formControlName="rollNo" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input formControlName="phone" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Branch</ion-label>
+          <ion-input formControlName="branch" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Tenth Marks</ion-label>
+          <ion-input formControlName="tenthGrade" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">Twelth Marks</ion-label>
+          <ion-input formControlName="twelveGrade" required></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="input">
+          <ion-label position="floating">College Marks</ion-label>
+          <ion-input formControlName="clgAcademics" required></ion-input>
+        </ion-item>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block"
+            >Submit</ion-button
+          >
+        </ion-col>
+      </form>
+    </div>
+  </div>
+</ion-content>

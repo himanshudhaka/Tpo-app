@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/_models/jobs';
 import { JobsService } from 'src/app/services/jobs.service';
 import { first } from 'rxjs';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -10,18 +11,26 @@ import { first } from 'rxjs';
 export class HomePage implements OnInit {
   jobs: Job[] = [];
   user: any;
-  constructor(private jobsService: JobsService) {}
-
+  constructor(readonly authService: AuthServiceService) {}
+  user$ = this.authService.user;
   ngOnInit() {
-    // this.jobs = [];
-    this.jobsService
-      .getJobs()
-      .pipe(first())
-      .subscribe((data) => {
-        this.jobs = data;
-        // console.log(this.jobs);
+    this.authService.getJobOfCom().subscribe((job) => {
+      this.jobs = job;
+    });
+  }
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      this.authService.getJobOfCom().subscribe((job) => {
+        this.jobs = job;
       });
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    // console.log(this.user);
+      event.target.complete();
+    }, 2000);
+  }
+  onClick(id: number) {
+    this.authService.deleteJob(id).subscribe((job) => {
+      console.log(job);
+      this.jobs = this.jobs.filter((job) => job.id != id);
+    });
   }
 }

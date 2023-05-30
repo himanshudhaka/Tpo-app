@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ChangePasswordPageRoutingModule } from './change-password-routing.module';
+import { DetailsPageRoutingModule } from './details-routing.module';
 
-import { ChangePasswordPage } from './change-password.page';
+import { DetailsPage } from './details.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    ChangePasswordPageRoutingModule,
     ReactiveFormsModule,
+    IonicModule,
+    DetailsPageRoutingModule,
   ],
-  declarations: [ChangePasswordPage],
+  declarations: [DetailsPage],
 })
-export class ChangePasswordPageModule {}
+export class DetailsPageModule {}

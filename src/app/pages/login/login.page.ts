@@ -21,8 +21,6 @@ export class LoginPage implements OnInit {
     private toastCtrl: ToastController
   ) {
     this.type = this.route.snapshot.queryParams['type'];
-    // console.log(this.type);
-
     this.ionicForm = this.formBuilder.group({});
   }
 
@@ -56,7 +54,11 @@ export class LoginPage implements OnInit {
         .pipe(first())
         .subscribe({
           next: (data) => {
-            if (this.type === 'company') {
+            if (!data.phone) {
+              // console.log(data.phone);
+              console.log('hi');
+              this.router.navigate(['/details']);
+            } else if (this.type === 'company') {
               this.router.navigate(['/com-tab']);
             } else if (this.type === 'student') {
               this.router.navigate(['/tab']);

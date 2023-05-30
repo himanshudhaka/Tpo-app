@@ -51,6 +51,15 @@
           required
         ></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-select placeholder="College" formControlName="collegeId">
+          <ion-select-option
+            *ngFor="let college of colleges"
+            [value]="college.id"
+            >{{college.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
     </ion-list>
     <ion-col>
       <ion-button type="submit" color="danger" expand="block"

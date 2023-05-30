@@ -1,68 +1,74 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-      <ion-title>Edit Profile</ion-title>
-    </ion-buttons>
+    <div
+      class="header"
+      style="background-image: linear-gradient(to right, #00ff83, #80ffc2)"
+    >
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <h1 style="padding-left: 10px">JobTree</h1>
+      <img src="../../../../assets/tree.png" style="height: 26px" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form
-    class="form"
-    [formGroup]="ionicForm"
-    (ngSubmit)="submitForm()"
-    novalidate
-  >
-    <ion-list>
-      <ion-item>
+  <div class="box"></div>
+  <div class="content">
+    <h1>JobTree</h1>
+    <p>
+      JobTree is the #1 destination to find and list incredible remote jobs.
+    </p>
+  </div>
+
+  <div class="container">
+    <form
+      *ngIf="user$ | async as user"
+      class="form"
+      [formGroup]="form"
+      (ngSubmit)="submitForm()"
+      novalidate
+      style="width: 100%"
+    >
+      <!-- <ion-list> -->
+      <ion-item class="input" lines="none">
         <ion-input
           type="email"
           placeholder="Email"
           formControlName="email"
-          required
         ></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input placeholder="Name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input placeholder="Phone" formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input placeholder="Address" formControlName="address"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input placeholder="City" formControlName="city"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input placeholder="State" formControlName="state"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input placeholder="Pincode" formControlName="pincode"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
         <ion-input
-          placeholder="Name"
-          formControlName="name"
-          required
+          placeholder="AICTE Code"
+          formControlName="aicte_id"
         ></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-input
-          placeholder="Phone"
-          formControlName="phone"
-          required
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          placeholder="City"
-          formControlName="city"
-          required
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          placeholder="State"
-          formControlName="state"
-          required
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          placeholder="Pincode"
-          formControlName="pincode"
-          required
-        ></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-col>
-      <ion-button type="submit" color="danger" expand="block"
-        >Submit</ion-button
-      >
-    </ion-col>
-  </form>
+      <!-- </ion-list> -->
+      <ion-col>
+        <ion-button type="submit" color="secondary" expand="block"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </form>
+  </div>
 </ion-content>

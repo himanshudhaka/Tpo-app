@@ -52,6 +52,10 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard],
     data: { type: 'company' },
   },
+  {
+    path: 'details',
+    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
+  },
 ];
 
 @NgModule({

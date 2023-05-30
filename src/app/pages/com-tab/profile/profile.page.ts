@@ -9,17 +9,12 @@ import { first } from 'rxjs';
 })
 export class ProfilePage implements OnInit {
   company: Company;
-  constructor(private authService: AuthServiceService) {}
-
-  ngOnInit() {
-    this.authService
-      .getById()
-      .pipe(first())
-      .subscribe((company) => {
-        // console.log(company);
-        this.company = company;
-      });
+  user$ = this.authService.user$;
+  constructor(private authService: AuthServiceService) {
+    console.log(this.authService.user);
   }
+
+  ngOnInit() {}
   onClick() {
     // console.log('hi');
     this.authService.logout();

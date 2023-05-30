@@ -1,13 +1,104 @@
 <ion-header>
-  <ion-toolbar style="margin-top: 8px">
-    <ion-searchbar animated="true" placeholder="Search"></ion-searchbar>
+  <ion-toolbar>
+    <div
+      class="header"
+      style="background-image: linear-gradient(to right, #00ff83, #80ffc2)"
+    >
+      <h1 style="padding-left: 10px">JobTree</h1>
+      <img src="../../../../assets/tree.png" style="height: 26px" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item [routerLink]="['company']">
-      <ion-label>DhakaTech</ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="container">
+    <div class="box"></div>
+
+    <ion-card class="card" (click)="setOpen(job)" *ngFor="let job of jobs">
+      <ion-card-header>
+        <ion-card-title>{{job.job.post}}</ion-card-title>
+        <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+      </ion-card-header>
+
+      <ion-card-content>
+        <div style="display: flex">
+          <ion-icon name="business-outline"></ion-icon>
+          <h3 style="margin-left: 10px">{{job.job.company.name}}</h3>
+        </div>
+        <div style="display: flex">
+          <ion-icon name="location-outline"></ion-icon>
+          <h3 style="margin-left: 10px">
+            {{job.job.company.city}}, {{job.job.company.state}}
+          </h3>
+        </div>
+        <div>
+          <ion-label
+            [color]="job.status === 'REVIEW' ? 'warning' : 'ACCEPTED' ? 'success' : 'REJECTED' ? 'danger' : ''"
+            >{{job.status}}</ion-label
+          >
+        </div>
+      </ion-card-content>
+      <!-- <ion-button expand="block" 
+        >Open Sheet Modal</ion-button
+      > -->
+    </ion-card>
+
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <div
+              class="header"
+              style="
+                background-image: linear-gradient(to right, #00ff83, #80ffc2);
+              "
+            >
+              <h1 style="padding-left: 10px">JobTree</h1>
+              <img src="../../../../assets/tree.png" style="height: 26px" />
+              <ion-buttons slot="end" style="margin-left: 183px">
+                <ion-button (click)="isModalOpen = false">Close</ion-button>
+              </ion-buttons>
+            </div>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div>
+            <div class="container">
+              <div class="box"></div>
+
+              <div class="avatar"></div>
+              <h1>{{job.job.post}}</h1>
+              <h5>
+                {{job.job.company.name}} - {{job.job.company.city}},
+                {{job.job.company.state}}
+              </h5>
+              <div
+                style="
+                  display: flex;
+                  width: 80%;
+                  justify-content: space-between;
+                "
+              >
+                <h3>Full time</h3>
+                <h3>{{job.job.salary}}</h3>
+              </div>
+              <div>
+                <h3>Description</h3>
+                <h4>{{job.job.description}}</h4>
+              </div>
+              <div>
+                <ion-label
+                  [color]="job.status === 'REVIEW' ? 'warning' : 'ACCEPTED' ? 'success' : 'REJECTED' ? 'danger' : ''"
+                  >{{job.status}}</ion-label
+                >
+              </div>
+            </div>
+          </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
 </ion-content>

@@ -1,36 +1,44 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <div class="header">
-      <img
-        style="height: 90%; margin: 12px"
-        src="../../../../assets/logo.PNG"
-      />
-      <ion-title style="padding: 0%">TPO</ion-title>
+  <ion-toolbar
+    style="--background: linear-gradient(to right, #00ff83, #80ffc2)"
+  >
+    <div
+      style="
+        background-image: linear-gradient(to right, #00ff83, #80ffc2);
+        width: 100%;
+        display: block;
+        height: 100%;
+      "
+    >
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="box"></div>
+  <div class="content">
+    <h1>JobTree</h1>
+    <p>
+      JobTree is the #1 destination to find and list incredible remote jobs.
+    </p>
+  </div>
   <div class="container">
-    <div style="width: 100%">
-      <h1>Sign in</h1>
-    </div>
-
     <div style="width: 100%">
       <form
         class="form"
         [formGroup]="ionicForm"
         (ngSubmit)="submitForm()"
         novalidate
+        style="width: 100%"
       >
-        <ion-item lines="full">
+        <ion-item lines="full" class="input">
           <ion-label position="floating">Email</ion-label>
           <ion-input type="email" formControlName="email" required></ion-input>
         </ion-item>
-        <ion-item lines="full">
+        <ion-item lines="full" class="input">
           <ion-label position="floating">Password</ion-label>
           <ion-input
             type="password"
@@ -39,7 +47,11 @@
           ></ion-input>
         </ion-item>
         <ion-col>
-          <ion-button type="submit" color="danger" expand="block"
+          <ion-button
+            type="submit"
+            color="secondary"
+            expand="block"
+            style="height: 50px"
             >Submit</ion-button
           >
         </ion-col>
@@ -47,7 +59,9 @@
     </div>
   </div>
   <div class="footer">
-    New to TPO?
-    <a [routerLink]="['/register']">Create an account</a>
+    Don't have an account?
+    <a style="color: var(--ion-color-primary)" [routerLink]="['/register']">
+      Sign up</a
+    >
   </div>
 </ion-content>

@@ -1,67 +1,105 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-      <ion-title>Edit profile</ion-title>
-    </ion-buttons>
+    <div
+      class="header"
+      style="background-image: linear-gradient(to right, #00ff83, #80ffc2)"
+    >
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <h1 style="padding-left: 10px">JobTree</h1>
+      <img src="../../../../assets/tree.png" style="height: 26px" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form
-    class="form"
-    [formGroup]="ionicForm"
-    (ngSubmit)="submitForm()"
-    novalidate
-  >
-    <ion-list>
-      <ion-item>
+  <div class="box"></div>
+  <div class="content">
+    <h1>JobTree</h1>
+    <p>
+      JobTree is the #1 destination to find and list incredible remote jobs.
+    </p>
+  </div>
+  <div class="container">
+    <form
+      *ngIf="user$ | async as user"
+      class="form"
+      [formGroup]="form"
+      (ngSubmit)="submitForm()"
+      novalidate
+      style="width: 100%"
+    >
+      <!-- <ion-list> -->
+      <ion-item class="input">
         <ion-input
           placeholder="Roll No."
-          formControlName="rollno"
+          formControlName="rollNo"
           required
         ></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="input">
         <ion-input
           placeholder="First Name"
-          formControlName="firstname"
+          formControlName="firstName"
           required
         ></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="input">
         <ion-input
           placeholder="Last Name"
-          formControlName="lastname"
+          formControlName="lastName"
           required
         ></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="input">
         <ion-input
           placeholder="Email"
           formControlName="email"
           required
         ></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="input">
         <ion-input
           placeholder="Phone"
           formControlName="phone"
           required
         ></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="input">
         <ion-input
-          placeholder="Academics"
-          formControlName="academics"
+          placeholder="Bramch"
+          formControlName="branch"
           required
         ></ion-input>
       </ion-item>
-    </ion-list>
-    <ion-col>
-      <ion-button type="submit" color="danger" expand="block"
-        >Submit</ion-button
-      >
-    </ion-col>
-  </form>
+      <ion-item class="input">
+        <ion-input
+          placeholder="College Marks"
+          formControlName="clgAcademics"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item class="input">
+        <ion-input
+          placeholder="Tenth Marks"
+          formControlName="tenthGrade"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item class="input">
+        <ion-input
+          placeholder="Twelth Marks"
+          formControlName="twelveGrade"
+          required
+        ></ion-input>
+      </ion-item>
+      <!-- </ion-list> -->
+      <ion-col>
+        <ion-button type="submit" color="secondary" expand="block"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </form>
+  </div>
 </ion-content>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { JobsService } from 'src/app/services/jobs.service';
 @Component({
   selector: 'app-add-drive',
@@ -12,10 +13,12 @@ import { JobsService } from 'src/app/services/jobs.service';
 export class AddDrivePage implements OnInit {
   ionicForm: FormGroup;
   isSubmitted = false;
+  colleges: any;
   constructor(
     public formBuilder: FormBuilder,
     private jobService: JobsService,
-    private router: Router
+    private router: Router,
+    private authService: AuthServiceService
   ) {
     this.ionicForm = this.formBuilder.group({});
   }
@@ -27,6 +30,11 @@ export class AddDrivePage implements OnInit {
       salary: [],
       criteria: [],
       process: [],
+      collegeId: [],
+    });
+    this.authService.getColleges().subscribe((data) => {
+      this.colleges = data;
+      console.log(this.colleges);
     });
   }
   get errorControl() {
@@ -37,14 +45,8 @@ export class AddDrivePage implements OnInit {
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!');
     } else {
-      let newJob = this.ionicForm.value;
-      let collegeId = 3;
-      newJob = {
-        collegeId,
-        ...newJob,
-      };
       this.jobService
-        .postJobs(newJob)
+        .postJobs(this.ionicForm.value)
         .pipe(first())
         .subscribe((data) => {
           this.router.navigate(['com-tab/home']);

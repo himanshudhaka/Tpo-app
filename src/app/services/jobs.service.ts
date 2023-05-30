@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Job } from '../_models/jobs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class JobsService {
-  job: Job[] = [];
+  // job: Job[] = [];
   apiUrl: string = 'http://localhost:3000';
   data: any;
+  private readonly job: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   constructor(private http: HttpClient) {
     this.data = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   getJobs() {
-    return this.http.get<Job[]>(
-      `${this.apiUrl}/companies/${this.data.id}/jobs`
-    );
+    this.http.get<any[]>(`${this.apiUrl}/companies/${this.data.id}/jobs`);
+  }
+
+  jobs(): Observable<any[]> {
+    return this.job.asObservable();
   }
 
   postJobs(newJob: any) {

@@ -1,26 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <div class="header">
-      <img
-        style="height: 90%; margin: 12px"
-        src="../../../../assets/logo.PNG"
-      />
-      <ion-title style="padding: 0%">TPO</ion-title>
+    <div
+      class="header"
+      style="background-image: linear-gradient(to right, #00ff83, #80ffc2)"
+    >
+      <h1 style="padding-left: 10px">JobTree</h1>
+      <img src="../../../../assets/tree.png" style="height: 26px" />
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let student of students">
-      <ion-label>{{student.firstName + " " + student.lastName}}</ion-label>
-      <ion-button
-        [color]="student.approved ? 'success' : 'danger'"
-        slot="end"
-        fill="outline"
-      >
-        {{student.approved ? 'Disable' : 'Enable'}}
-      </ion-button>
-    </ion-item>
-  </ion-list>
+  <ion-spinner *ngIf="loading.init"></ion-spinner>
+  <div>
+    <div class="box"></div>
+
+    <ion-accordion-group>
+      <ion-accordion [value]="student.id" *ngFor="let student of students">
+        <ion-item slot="header" color="light">
+          <ion-label>{{student.firstName}} {{student.lastName}}</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <h3>{{student.firstName}} {{student.lastName}}</h3>
+          <p>{{student.email}}</p>
+          <p>{{student.phone}}</p>
+          <p>{{student.clgAcademics}}</p>
+          <p>{{student.tenthGrade}}</p>
+          <p>{{student.twelveGrade}}</p>
+          <ion-button
+            [color]="student.approved ? 'success' : 'danger'"
+            slot="end"
+            fill="outline"
+            (click)="toggleStudentStatus(student)"
+            [disabled]="loading.toggleStudentStatus"
+          >
+            {{student.approved ? 'Disable' : 'Enable'}}
+          </ion-button>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
 </ion-content>

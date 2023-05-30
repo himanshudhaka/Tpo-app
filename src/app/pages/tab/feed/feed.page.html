@@ -1,37 +1,92 @@
 <ion-header>
   <ion-toolbar>
-    <div class="header">
-      <img
-        style="height: 90%; margin: 12px"
-        src="../../../../assets/logo.PNG"
-      />
-      <ion-title style="padding: 0%">TPO</ion-title>
+    <div
+      class="header"
+      style="background-image: linear-gradient(to right, #00ff83, #80ffc2)"
+    >
+      <h1 style="padding-left: 10px">JobTree</h1>
+      <img src="../../../../assets/tree.png" style="height: 26px" />
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="container">
-    <ion-card class="card" *ngFor="let job of jobs">
+    <div class="box"></div>
+    <!-- <div *ngIf="!yes">You are not approved by your college</div> -->
+    <ion-card class="card" *ngFor="let job of jobs" (click)="setOpen(job)">
       <ion-card-header>
-        <ion-card-title>DhakaTech</ion-card-title>
+        <ion-card-title>{{job.post}}</ion-card-title>
         <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
       </ion-card-header>
 
       <ion-card-content>
-        <ion-chip color="primary"
-          ><ion-icon name="arrow-redo-outline"></ion-icon> {{
-          job.post}}</ion-chip
-        >
-        <ion-chip color="primary"
-          ><ion-icon name="cash-outline"></ion-icon>$5000</ion-chip
-        >
-        <ion-chip color="primary"
-          ><ion-icon name="calendar"></ion-icon>1 Jan 2023</ion-chip
-        >
-        <ion-chip color="primary">60%</ion-chip>
+        <div style="display: flex">
+          <ion-icon name="business-outline"></ion-icon>
+          <h3 style="margin-left: 10px">{{job.company.name}}</h3>
+        </div>
+        <div style="display: flex">
+          <ion-icon name="location-outline"></ion-icon>
+          <h3 style="margin-left: 10px">
+            {{job.company.city}}, {{job.company.state}}
+          </h3>
+        </div>
       </ion-card-content>
-      <ion-button style="margin: 20px">Apply</ion-button>
     </ion-card>
   </div>
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <div
+            class="header"
+            style="
+              background-image: linear-gradient(to right, #00ff83, #80ffc2);
+            "
+          >
+            <h1 style="padding-left: 10px">JobTree</h1>
+            <img src="../../../../assets/tree.png" style="height: 26px" />
+            <ion-buttons slot="end" style="margin-left: 183px">
+              <ion-button (click)="isModalOpen = false">Close</ion-button>
+            </ion-buttons>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div>
+          <div class="box"></div>
+
+          <div class="container">
+            <div class="avatar"></div>
+            <h1>{{job.post}}</h1>
+            <h5>
+              {{job.company.name}} - {{job.company.city}}, {{job.company.state}}
+            </h5>
+            <div
+              style="display: flex; width: 80%; justify-content: space-between"
+            >
+              <h3>Full time</h3>
+              <h3>{{job.salary}}</h3>
+            </div>
+            <div>
+              <h3>Description</h3>
+              <h4>{{job.description}}</h4>
+            </div>
+            <ion-button
+              style="margin: 2%"
+              [color]="job.applied ? 'success':''"
+              (click)="onClick(job)"
+              [disabled]="job.applied"
+              >{{job.applied ? "Applied" : "Apply"}}</ion-button
+            >
+          </div>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

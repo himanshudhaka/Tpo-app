@@ -5,44 +5,13 @@
 </ion-header> -->
 
 <ion-content>
-  <div class="img">
-    <img src="../../../assets/Capture.PNG" />
-  </div>
+  <div class="box"></div>
   <div class="container">
-    <!--?xml version="1.0" standalone="no"?-->
-    <svg
-      id="sw-js-blob-svg"
-      viewBox="0 0 100 100"
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
-    >
-      <defs>
-        <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
-          <stop
-            id="stop1"
-            stop-color="rgba(217, 232, 255, 1)"
-            offset="0%"
-          ></stop>
-          <stop
-            id="stop2"
-            stop-color="rgba(217, 232, 255, 1)"
-            offset="100%"
-          ></stop>
-        </linearGradient>
-      </defs>
-      <path
-        fill="url(#sw-gradient)"
-        d="M28.3,-33.8C36.1,-27.2,41.5,-17.7,40.7,-9.1C40,-0.5,33.1,7.3,27.5,14.8C21.9,22.2,17.5,29.2,11.4,31.7C5.2,34.1,-2.8,31.9,-10.2,28.8C-17.5,25.8,-24.2,21.8,-30.1,15.5C-36.1,9.1,-41.4,0.4,-41.3,-8.5C-41.2,-17.5,-35.7,-26.8,-28,-33.4C-20.2,-40,-10.1,-43.9,0.1,-44C10.2,-44.1,20.5,-40.4,28.3,-33.8Z"
-        width="100%"
-        height="100%"
-        transform="translate(50 50)"
-        stroke-width="0"
-        style="transition: all 0.3s ease 0s"
-        stroke="url(#sw-gradient)"
-      ></path>
-    </svg>
+    <div class="img">
+      <img src="../../../assets/tree.png" />
+    </div>
     <div>
-      <h1 style="font-size: 50px; color: #3880ff">TPO</h1>
+      <h1 style="font-size: 50px; color: var(--ion-color-primary)">JobTree</h1>
     </div>
   </div>
 </ion-content>
@@ -53,7 +22,7 @@
       class="btn"
       [routerLink]="['/login']"
       [queryParams]="{type: 'company'}"
-      [ngStyle]="{'background-color':'#eb445a'}"
+      [ngStyle]="{'background-color':'var(--ion-color-secondary)'}"
     >
       Comapny
     </button>
